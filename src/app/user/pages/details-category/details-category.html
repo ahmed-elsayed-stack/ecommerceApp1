@@ -1,0 +1,22 @@
+<section *ngIf="detailsCategory()" class="p-6">
+  <h2 class="text-2xl font-bold mb-4">{{ detailsCategory()?.name }}</h2>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <ng-container *ngIf="filteredProducts().length; else noProducts">
+      <ng-container *ngFor="let item of filteredProducts(); trackBy: trackById">
+        <app-product-card
+          [product]="item"
+          [routerLink]="['/detailsProduct', item._id]"
+        >
+          <app-add-to-cart-button [productId]="item._id"></app-add-to-cart-button>
+        </app-product-card>
+      </ng-container>
+    </ng-container>
+
+    <ng-template #noProducts>
+      <p class="col-span-full text-center text-gray-500">
+        لا توجد منتجات لهذه الفئة
+      </p>
+    </ng-template>
+  </div>
+</section>

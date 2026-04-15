@@ -1,0 +1,84 @@
+<section class="p-6 max-w-5xl mx-auto">
+
+  @if (cartProduct()) {
+
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-2xl font-bold underline text-main">My Cart</h2>
+      <button
+          class="border border-red-700 text-red-700 bg-transparent cursor-pointer px-4 py-2 rounded-lg hover:bg-red-700 hover:text-white transition"
+        (click)="clearCart()">
+        Clear Cart
+      </button>
+    </div>
+
+     <!-- Total -->
+    <div class="ms-6 text-right text-xl font-bold">
+      Total: {{ cartProduct()?.totalCartPrice  | currency}}
+    </div>
+
+    <!-- Products -->
+    <div class="space-y-4 text-main">
+
+      @for (item of cartProduct()?.products; track item._id) {
+
+        <div class="flex items-center gap-4 border-1 border-primary-800 p-4 rounded-lg shadow-sm">
+
+          <!-- Image -->
+          <img
+            [src]="item?.product?.imageCover"
+            class="w-20 h-20 object-cover rounded-lg"
+            alt=""
+          />
+
+          <!-- Info -->
+          <div class="flex-1">
+            <h3 class="font-semibold text-main">
+              {{ item.product.title }}
+            </h3>
+
+            <p class="text-gray-500">
+              Price: {{ item.price | currency: 'GBP' }}
+            </p>
+
+            <p class="text-sm text-gray-400">
+              Brand: {{ item.product.brand.name }}
+            </p>
+          </div>
+
+          <!-- Quantity controls -->
+          <div class="flex items-center gap-2">
+
+            <button
+              class="px-3 py-1 cursor-pointer text-white rounded bg-main"
+              (click)="updateQty(item.product._id , item.count - 1 )">
+              -
+            </button>
+
+            <span class="font-bold">{{ item.count }}</span>
+
+            <button
+              class="px-3 py-1 bg-main cursor-pointer text-white rounded"
+              (click)="updateQty(item.product._id , item.count + 1 )">
+              +
+            </button>
+
+          </div>
+
+          <!-- Remove -->
+          <button
+            class="text-red-600 font-bold  cursor-pointer"
+            (click)="removeItem(item.product._id)">
+             <i  aria-label="Aria Name" class="pi pi-trash"></i>
+          </button>
+
+        </div>
+
+      }
+
+    </div>
+
+
+  }
+
+</section>

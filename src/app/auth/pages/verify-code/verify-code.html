@@ -1,0 +1,59 @@
+<app-auth-form
+  title="Verify Code"
+  [formGroup]="VerifyCodeForm"
+  submitLabel="Verify OTP"
+  [loading]="isLoading"
+  (formSubmit)="verifyCodeSubmit()"
+>
+
+  <!-- Header -->
+  <div class="text-center mb-6">
+
+    <i class="pi pi-shield text-4xl text-primary mb-3"></i>
+
+    <h2 class="text-2xl font-bold text-gray-800">
+      Enter the OTP Code
+    </h2>
+
+    <p class="text-gray-500 mt-2">
+      We have sent a
+      <span class="font-semibold text-primary">6-digit code</span>
+      to your email
+    </p>
+
+  </div>
+
+  <!-- OTP -->
+  <div class="my-6">
+
+    <div class="flex justify-center">
+      <p-inputotp
+        formControlName="resetCode"
+        [length]="6"
+        styleClass="gap-2">
+      </p-inputotp>
+    </div>
+
+    <app-error-message
+      [control]="VerifyCodeForm.get('resetCode')"
+      type="password"
+      >
+    </app-error-message>
+
+  </div>
+
+  <!-- Resend -->
+  <div class="text-center mt-4">
+    <p class="text-sm text-gray-400">
+      Didn’t receive the code?
+      <button
+        type="button"
+        class="text-primary font-semibold ml-1 hover:underline">
+        Resend
+      </button>
+    </p>
+  </div>
+
+</app-auth-form>
+
+

@@ -1,0 +1,80 @@
+<section class="p-2 my-1 shadow-3 " >
+ <h2 class="my-1 p-1 text-main font-bold">HOT SALE</h2>
+  <div class="grid grid-cols-12 gap-8  ">
+     <div class="col-span-12 md:col-span-7 ">
+    <!-- curcouel -->
+      <p-carousel
+    [value]="imgs"
+    [numVisible]="1"
+    [numScroll]="1"
+    [circular]="true"
+    [autoplayInterval]="5000"
+    [showNavigators]="true"
+    [responsiveOptions]="responsiveOptions"
+>
+
+<ng-template let-item pTemplate="item">
+    <div class="banner">
+        <img
+         [src]="item.image"
+           class="w-full h-[500px] object-cover rounded-xl"
+         alt="banner">
+    </div>
+</ng-template>
+
+</p-carousel>
+  </div>
+
+ <div class="col-span-12 md:col-span-5  p-4">
+
+  <div class="grid md:grid-cols-2 grid-cols-1  sm:grid-cols-2 gap-4">
+
+    <div  class="bg-white  p-4 rounded shadow cursor-pointer">
+      @for (item of productList().slice(36, 37); track $index) {
+         <app-product-card
+          [routerLink]="['/detailsProduct' , item.id]"
+          [product]="item"
+      ></app-product-card>
+      }
+
+    </div>
+
+    <div class="bg-white p-4 rounded shadow cursor-pointer">
+        @for (item of productList().slice(39, 40); track $index) {
+         <app-product-card
+          [routerLink]="['/detailsProduct' , item.id]"
+          [product]="item"
+      ></app-product-card>
+      }
+    </div>
+
+
+  </div>
+
+</div>
+  </div>
+
+ <div class="p-2 my-3  ">
+
+</div>
+
+</section>
+<!-- best product -->
+ <section class="p-2 my-2">
+  <h2 class="my-1 p-1 text-main font-bold">Poplar Product</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 ">
+
+      <ng-container>
+        @for (item of productList().slice(20, 40); track item.id) {
+          <app-product-card
+          [product]="item"
+         [routerLink]="['/detailsProduct' , item.id]"
+          >
+           <app-add-to-cart-button [productId]="item?._id!"></app-add-to-cart-button>
+
+        </app-product-card>
+        }
+
+  </ng-container>
+  </div>
+ </section>

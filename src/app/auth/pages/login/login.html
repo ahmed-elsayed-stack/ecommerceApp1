@@ -1,0 +1,60 @@
+<app-auth-form
+  [formGroup]="loginForm"
+  title="Login Form"
+  submitLabel="Login"
+  [loading]="isLoading"
+  (formSubmit)="loginSubmit()"
+>
+
+  <!-- Email -->
+  <div class="my-4 p-3 field">
+    <p-inputgroup>
+      <p-inputgroup-addon>
+        <i class="pi pi-envelope"></i>
+      </p-inputgroup-addon>
+      <input
+        type="email"
+        formControlName="email"
+        pInputText
+        placeholder="Email"
+        [pAutoFocus]="true"
+      />
+    </p-inputgroup>
+
+    <app-error-message
+      [control]="loginForm.get('email')"
+      type="email">
+    </app-error-message>
+  </div>
+
+  <!-- Password -->
+  <div class="my-4 p-3 field">
+    <p-inputgroup>
+      <p-inputgroup-addon>
+        <i class="pi pi-lock"></i>
+      </p-inputgroup-addon>
+      <input
+        type="password"
+        formControlName="password"
+        pInputText
+        placeholder="Password"
+      />
+    </p-inputgroup>
+
+    <app-error-message
+      [control]="loginForm.get('password')"
+      type="password">
+    </app-error-message>
+    <div class="flex justify-end">
+  <span routerLink="/forgotPassword" class="text-blue-600 cursor-pointer">Forgot your password?</span>
+</div>
+  </div>
+
+</app-auth-form>
+
+<!-- Auth Link -->
+<app-auth-link
+  text="Don't have an account?"
+  linkText="Register"
+  link="/register">
+</app-auth-link>

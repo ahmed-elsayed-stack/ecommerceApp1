@@ -7,6 +7,14 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
+    "paths": {
+      "authLibrary": [
+        "./dist/auth-library"
+      ],
+      "my-lib": [
+        "./dist/my-lib"
+      ]
+    },
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
     "isolatedModules": true,
@@ -29,6 +37,18 @@
     },
     {
       "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/my-lib/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/my-lib/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/auth-library/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/auth-library/tsconfig.spec.json"
     }
   ]
 }

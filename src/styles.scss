@@ -1,1 +1,54 @@
 /* You can add global styles to this file, and also import other style files */
+
+@use "tailwindcss";
+@import "primeicons/primeicons.css";
+
+:root {
+  --main-color: #0099E6;
+  --light-color: #f0f3f2;
+  --shadow: rgba(145, 158, 171, 0.2) 0px 2px 4px -1px,
+    rgba(145, 158, 171, 0.14) 0px 4px 5px 0px,
+    rgba(145, 158, 171, 0.12) 0px 1px 10px 0px;
+  --font-family: "Encode Sans Expanded", sans-serif;
+  --rating-color: #ffc908;
+}
+
+.text-main {
+  color: var(--main-color);
+}
+.bg-main {
+  background-color: var(--main-color) !important;
+}
+
+.active-link {
+  color: var(--main-color);
+  font-weight: bold;
+}
+
+.btn-main {
+  background-color: var(--main-color);
+  padding: 7px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.5s;
+}
+
+.btn-main:hover {
+  background-color:  #33AAFF;
+}
+
+.rating-color {
+  color: var(--rating-color);
+}
+
+.active-link {
+  background-color:  var(--main-color) !important;
+  color: #fff;
+   border-radius: 15px;
+}
+
+
+
+

@@ -1,0 +1,16 @@
+<section class="container shadow-4 mx-auto w-160 p-2">
+  <h2 class="font-bold text-4xl my-2 text-center">{{ title }}</h2>
+
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="p-2">
+
+    <ng-content></ng-content>
+
+    <app-auth-button
+      [label]="submitLabel"
+      type="submit"
+      [loading]="loading"
+      [disabled]="formGroup.invalid">
+    </app-auth-button>
+
+  </form>
+</section>

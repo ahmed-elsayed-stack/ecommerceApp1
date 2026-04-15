@@ -1,0 +1,33 @@
+<section class="rounded-lg my-2 p-3 shadow-md">
+  <div class="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+    @for (cat of categoriesList(); track cat._id) {
+      <div class="text-center bg-white rounded-lg p-3 my-3 hover:shadow-lg transition duration-300">
+
+        <figure [routerLink]="['/detailscategory' , cat._id]">
+          <img
+            class="w-full h-160 object-cover rounded-md mb-2"
+            [src]="cat.image"
+            alt=""
+          >
+        </figure>
+
+        <h2 class="text-sm font-medium text-main">
+          {{ cat.name }}
+        </h2>
+
+      </div>
+    }
+
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+

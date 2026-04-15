@@ -1,0 +1,125 @@
+<app-auth-form
+  [formGroup]="registerForm"
+  title="Register Form"
+
+  [loading]="isLoading"
+  (formSubmit)="RegisterSubmit()"
+>
+
+  <!-- Name -->
+  <div class="my-3 p-1 field">
+    <p-inputgroup>
+      <p-inputgroup-addon>
+        <i class="pi pi-user"></i>
+      </p-inputgroup-addon>
+      <input
+        type="text"
+        formControlName="name"
+        pInputText
+        placeholder="User Name"
+        [pAutoFocus]="true"
+      />
+    </p-inputgroup>
+
+    <app-error-message
+      [control]="registerForm.get('name')"
+      type="name">
+    </app-error-message>
+  </div>
+
+  <!-- Email -->
+  <div class="my-3 p-1 field">
+    <p-inputgroup>
+      <p-inputgroup-addon>
+        <i class="pi pi-envelope"></i>
+      </p-inputgroup-addon>
+      <input
+        type="email"
+        formControlName="email"
+        pInputText
+        placeholder="Email"
+      />
+    </p-inputgroup>
+
+    <app-error-message
+      [control]="registerForm.get('email')"
+      type="email">
+    </app-error-message>
+  </div>
+
+  <!-- Phone -->
+  <div class="my-3 p-1 field">
+    <p-inputgroup>
+      <p-inputgroup-addon>
+        <i class="pi pi-phone"></i>
+      </p-inputgroup-addon>
+      <input
+        type="tel"
+        formControlName="phone"
+        pInputText
+        placeholder="Phone"
+      />
+    </p-inputgroup>
+
+    <app-error-message
+      [control]="registerForm.get('phone')"
+      type="phone">
+    </app-error-message>
+  </div>
+
+  <!-- Password -->
+  <div class="my-3 p-1 field">
+    <p-inputgroup>
+      <p-inputgroup-addon>
+        <i class="pi pi-lock"></i>
+      </p-inputgroup-addon>
+      <input
+        type="password"
+        formControlName="password"
+        pInputText
+        placeholder="Password"
+      />
+    </p-inputgroup>
+
+    <app-error-message
+      [control]="registerForm.get('password')"
+      type="password">
+    </app-error-message>
+  </div>
+
+  <!-- Confirm Password -->
+  <div class="my-3 p-1 field">
+    <p-inputgroup>
+      <p-inputgroup-addon>
+        <i class="pi pi-key"></i>
+      </p-inputgroup-addon>
+      <input
+        type="password"
+        formControlName="rePassword"
+        pInputText
+        placeholder="Confirm Password"
+      />
+    </p-inputgroup>
+
+    <app-error-message
+      [control]="registerForm.get('rePassword')"
+      type="confirmPassword">
+    </app-error-message>
+  </div>
+
+</app-auth-form>
+
+<!-- Toast -->
+<div class="card flex justify-center gap-2">
+  <p-toast key="error"></p-toast>
+  <p-toast key="success"></p-toast>
+</div>
+
+<!-- Auth Link -->
+<app-auth-link
+  text="Already have an account?"
+  linkText="Login"
+  link="/login">
+</app-auth-link>
+
+
