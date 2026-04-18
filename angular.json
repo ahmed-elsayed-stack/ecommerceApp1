@@ -27,6 +27,7 @@
   "src/assets"
 ],
             "styles": [
+            "node_modules/ngx-spinner/animations/ball-grid-pulse.css",
               "src/styles.scss"
             ]
           },

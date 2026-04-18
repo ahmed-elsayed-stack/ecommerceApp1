@@ -1,38 +1,79 @@
 import { Routes } from '@angular/router';
 import { AuthLayout } from './layouts/auth-layout/auth-layout';
 import { UserLayout } from './layouts/user-layout/user-layout';
-import { Login } from './auth/pages/login/login';
-import { Register } from './auth/pages/register/register';
-import { Home } from './user/pages/home/home';
 import { authGuard } from './auth/core/guards/auth-guard/auth-guard';
 import { logedGuard } from './auth/core/guards/loged-guard/loged-guard';
-import { Products } from './user/pages/products/products';
-import { Cart } from './user/pages/cart/cart';
-import { Categories } from './user/pages/categories/categories';
-import { DetailsProduct } from './user/pages/details-product/details-product';
-import { DetailsCategory } from './user/pages/details-category/details-category';
 import { detailsProductResolver } from './user/resolvers/details-product-resolver';
 import { detailsCategoryResolver } from './user/resolvers/details-category-resolver';
-import { VerifyCode } from './auth/pages/verify-code/verify-code';
-import { ResetPassword } from './auth/pages/reset-password/reset-password';
-import { ForgetPassword } from './auth/pages/forgot-password/forgot-password';
+
 
 export const routes: Routes = [
   {path: '' , component: AuthLayout , canActivate:[logedGuard] , children:[
     {path: '' , redirectTo: 'login' , pathMatch:'full'},
-    {path: 'login' , component: Login},
-    {path: 'register' , component: Register},
-    {path: 'forgotPassword' , component: ForgetPassword},
-    {path: 'VerifyCode' , component: VerifyCode},
-    {path: 'ResetPassword' , component: ResetPassword},
+   {
+  path: 'login',
+  loadComponent: () =>
+    import('./auth/pages/login/login').then(m => m.Login)
+},
+{
+  path: 'register',
+  loadComponent: () =>
+    import('./auth/pages/register/register').then(m => m.Register)
+},
+{
+  path: 'forgotPassword',
+  loadComponent: () =>
+    import('./auth/pages/forgot-password/forgot-password').then(m => m.ForgetPassword)
+},
+{
+  path: 'VerifyCode',
+  loadComponent: () =>
+    import('./auth/pages/verify-code/verify-code').then(m => m.VerifyCode)
+},
+{
+  path: 'ResetPassword',
+  loadComponent: () =>
+    import('./auth/pages/reset-password/reset-password').then(m => m.ResetPassword)
+}
   ]},
   {path: '' , component: UserLayout , canActivate:[authGuard] ,children:[
     {path: '' , redirectTo: 'home' , pathMatch:'full'},
-    {path: 'home' , component: Home},
-    {path: 'products' , component: Products},
-    {path: 'cart' , component: Cart},
-    {path: 'detailsProduct/:id' , component: DetailsProduct ,  resolve: { product: detailsProductResolver }},
-    {path: 'detailscategory/:id' , component: DetailsCategory , resolve: {category: detailsCategoryResolver}},
-    {path: 'categories' , component: Categories},
+  {
+  path: 'home',
+  loadComponent: () =>
+    import('./user/pages/home/home').then(m => m.Home)
+},
+{
+  path: 'products',
+  loadComponent: () =>
+    import('./user/pages/products/products').then(m => m.Products)
+},
+{
+  path: 'cart',
+  loadComponent: () =>
+    import('./user/pages/cart/cart').then(m => m.Cart)
+},
+{
+  path: 'categories',
+  loadComponent: () =>
+    import('./user/pages/categories/categories').then(m => m.Categories)
+},
+{
+  path: 'detailsProduct/:id',
+  loadComponent: () =>
+    import('./user/pages/details-product/details-product').then(m => m.DetailsProduct),
+  resolve: { product: detailsProductResolver }
+},
+{
+  path: 'detailscategory/:id',
+  loadComponent: () =>
+    import('./user/pages/details-category/details-category').then(m => m.DetailsCategory),
+  resolve: { category: detailsCategoryResolver }
+},
+   {
+  path: '**',
+  loadComponent: () =>
+    import('./user/pages/notfound/notfound').then(m => m.Notfound)
+}
   ]},
 ];
