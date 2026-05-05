@@ -3,10 +3,11 @@ import { CartService } from '../../services/cartservice/cart-service';
 import { Icart } from '../../interfaces/icart';
 import { CurrencyPipe } from '@angular/common';
 import { NotifecationMessage } from '../../../shared/services/notifecationMessage/notifecation-message';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-cart',
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe, RouterLink],
   templateUrl: './cart.html',
   styleUrl: './cart.scss',
 })

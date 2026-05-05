@@ -11,7 +11,7 @@ import { NgxSpinnerComponent } from "ngx-spinner";
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('youtubeEcommerce');
+  protected readonly title = signal('ecommerceApp1');
 
 
 

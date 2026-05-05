@@ -1,3 +1,4 @@
+import { Allorders } from './user/pages/allorders/allorders';
 import { Routes } from '@angular/router';
 import { AuthLayout } from './layouts/auth-layout/auth-layout';
 import { UserLayout } from './layouts/user-layout/user-layout';
@@ -69,6 +70,16 @@ export const routes: Routes = [
   loadComponent: () =>
     import('./user/pages/details-category/details-category').then(m => m.DetailsCategory),
   resolve: { category: detailsCategoryResolver }
+},
+{
+  path: 'checkout/:id',
+  loadComponent: () =>
+    import('./user/pages/Checkout/Checkout').then(m => m.CheckoutComponent),
+},
+{
+  path: 'allorders',
+  loadComponent: () =>
+    import('./user/pages/allorders/allorders').then(m => m.Allorders),
 },
    {
   path: '**',
