@@ -16,21 +16,22 @@
       "architect": {
         "build": {
           "builder": "@angular/build:application",
-          "options": {
-            "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
-            "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
-           "assets": [
-  "src/assets"
-],
-            "styles": [
-            "node_modules/ngx-spinner/animations/ball-grid-pulse.css",
-              "src/styles.scss"
-            ]
-          },
+        "options": {
+  "outputPath": "dist/youtubeEcommerce",
+  "browser": "src/main.ts",
+  "polyfills": [
+    "zone.js"
+  ],
+  "tsConfig": "tsconfig.app.json",
+  "inlineStyleLanguage": "scss",
+  "assets": [
+    "src/assets"
+  ],
+  "styles": [
+    "node_modules/ngx-spinner/animations/ball-grid-pulse.css",
+    "src/styles.scss"
+  ]
+},
           "configurations": {
             "production": {
               "budgets": [
